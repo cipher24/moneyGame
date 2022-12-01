@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>
+            MONEY GAME
+            
+        </h1>
+        <form>
+            <label>  Money:</label>
+            <span> </span>
+            <div id="timer"></div>
+            <span style="margin-left: 50px; min-width: 150px;"id="win"></span>
+            
+        </form>
+        <form class="options" > 
+            <label>Options:</label>
+            <label style="position: relative; margin-left: auto;"> BET HOW ? </label>
+            <br>
+            <label for="fixed"> $ bet:</label>
+            <input id="fixedBet" type="number" name="fixed"> 
+            <input id="radioFixed" type="radio" name="choice"><br>
+            <label for="percentage">Percentage of bank %</label>
+            <input id="percentBet" type="number" name="percent">
+            <input id="radioPercent" type="radio" name="choice">
+            
+        </form>
+        <form class="choice">
+            WIN CHANCES: <br>
+            <label>Heads' chance : 60% </label>
+            <br><!-- <input id="radioEagle" type="radio" name="choice"> -->
+            <label>Tails' chance : 40%</label>
+            <!-- <input id="radioTails" type="radio" name="choice"> -->
+
+        </form>
+        <button id="playHeads"> BET ON <br> HEADS </button>
+        <button id="playTails"> BET ON <br> TAILS </button>
+        <button id="restart"> RESTART </button>
+
+        <div id="app">
+            
+        </div>
+        <script src="./main.js"></script>
+    </body>
+</html>
