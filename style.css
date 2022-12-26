@@ -2,6 +2,7 @@ input:focus::placeholder {
     color: transparent;
 }
 form {
+    
     width: 450px;
     border: 1px solid black;
 }

@@ -81,22 +81,23 @@ playTails.addEventListener("click", () => {
 
 //?!
 // неправильно прибавляются проценты - скатывание в стринг и обычные теперь тоже
-//FIXED  @написать общую функцию которая будет вызываться и ей будет передаваться успех и значение ставки - вроде написал
+//FIXED  @написать общую функцию которая будет вызываться  и ей будет передаваться успех и значение ставки - вроде написал
 
 /* __тестовая функция  */
-function beginGamble2(success) {
+/* function beginGamble2(success) {
   console.log('working', success);
-};
+}; */
 
 let winSpanTransparent = 1;
 let winSpan = document.getElementById("win");
 let intervalMakeTransparent;
+
 function beginGamble(success) {
   let step = 1;
   winSpanTransparent = 1;
   if ((document.getElementById("fixedBet").value !== '')&&   (document.getElementById("radioFixed").checked)) {
-    console.log(`value=${document.getElementById("fixedBet").value} , type= ${typeof document.getElementById("fixedBet").value} , converted= ${Number(document.getElementById("fixedBet").value)}`);
-    console.log(`current=${currentMoney} , type= ${typeof currentMoney}`);
+    /* console.log(`value=${document.getElementById("fixedBet").value} , type= ${typeof document.getElementById("fixedBet").value} , converted= ${Number(document.getElementById("fixedBet").value)}`);
+    console.log(`current=${currentMoney} , type= ${typeof currentMoney}`); */
     step = Number(document.getElementById("fixedBet").value);
   }
   if ((document.getElementById("percentBet").value !== '')&&(document.getElementById("radioPercent").checked)) {
@@ -115,6 +116,7 @@ function beginGamble(success) {
       setTimeout(() => {
         clearInterval(intervalMakeTransparent);
         intervalMakeTransparent = null;
+        winSpan.textContent = ``;
       }, 1000);
     }
   }else {
@@ -129,6 +131,7 @@ function beginGamble(success) {
       setTimeout(() => {
         clearInterval(intervalMakeTransparent);
         intervalMakeTransparent = null;
+        winSpan.textContent = ``;
       }, 1000);
     }
   }
@@ -158,36 +161,3 @@ restartButton.addEventListener("click", () => {
   // console.log(step);
   // console.log('knopka restart');
 });
-
-let list3 = {
-  val: 1,
-  next: {
-      val: 2,
-      next: {
-          val: 3,
-          next: {
-              val: 4, 
-              next: null
-          }
-      }
-  }
-};
-
-console.log(list3);
-let a;
-let b = {
-  name: 'vova'
-}
-let c = a = {
-  name: 'andrey'
-};
-console.log('two objects:');
-console.log('object a:', a);
-console.log('object b:', b);
-console.log('object c like a:', c);
-console.log('changing a object');
-a.name = 'august';
-console.log('object a:', a);
-console.log('object c like a?:', c);
-console.log('deleting a');
-console.log('object a:', a);
