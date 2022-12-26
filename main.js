@@ -174,4 +174,20 @@ let list3 = {
 };
 
 console.log(list3);
-
+let a;
+let b = {
+  name: 'vova'
+}
+let c = a = {
+  name: 'andrey'
+};
+console.log('two objects:');
+console.log('object a:', a);
+console.log('object b:', b);
+console.log('object c like a:', c);
+console.log('changing a object');
+a.name = 'august';
+console.log('object a:', a);
+console.log('object c like a?:', c);
+console.log('deleting a');
+console.log('object a:', a);

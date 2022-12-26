@@ -82,24 +82,66 @@ let list3 = {
 };
 
 console.dir(list3, { depth: null });
-
+function deleteLastNode(list) {
+    let copy = list;
+    while(list.next !== null) {
+        if (list.next.next === null) {
+            list.next === null;
+        }
+        list = list.next;
+    }
+    return copy;
+}
+console.log('deleting last one');
+console.dir(deleteLastNode(list3), {depth: null});
+console.dir(list3, {depth: null});
 // сделать в обратном порядке
 //посмотрю=еть готовые решения, если не получится
 
 function reverseList(list) {
     let output = {};
     let listCopy = list;
-    while(list.next !== null) {
-        list = list.next;
-    }    
-    output.val = list.val;
-    output.next = null;
-    function rev(listCopy) {
-        if () {
-            
+    function rev(list) {
+        output.val = list.val;
+        // output.next = list;
+        if (list.val == 1) {
+            output.next = null;
         }
+        if (list.next !== null) {
+        }
+            let newNode = {};
+            newNode.val = list.val;
+            newNode.next = output;
+        return newNode;
     }
-    return list;
+    while (list.next !== null) {
+        rev(listCopy);
+    }
+    // return 
+    return output;
+}
+
+function reverseList2(list) {
+    let output = {};
+    function rev(nodes) {
+        let obj = {};
+        if (nodes.next !== null) {
+            nodes = nodes.next;
+            output.next = rev(nodes);
+            output.val = nodes.val;
+        }else {
+            /* output.val = nodes.val;
+            output.next = null; */
+            obj.val = nodes.val;
+            obj.next = null;
+        }
+        /* output.next = output;
+        output.val = nodes.val; */
+        // output.next = output;
+        return obj;
+    }
+    rev(list);
+    return output;
 }
     /* class ListNode {
         constructor(data) {
@@ -117,7 +159,7 @@ function reverseList(list) {
     node1.next = node2;
     let lisst = new LinkedList(node1); */
     console.log('changed version:');
-    console.dir(reverseList(list3), {depth: null});
+    console.dir(reverseList2(list3), {depth: null});
     
     /* function counter(n) {
         return {
@@ -155,3 +197,53 @@ addPrivateProperty(o, "Name", x => typeof x === "string");
 o.setName("Frank");
 console.log(o.getName());
 o.setName(0); */
+let a = {
+    name: 'andrey'
+};
+let b = {
+    name: 'vova'
+}
+let c = a;
+/* console.log('two objects:');
+console.log('object a:', a);
+console.log('object b:', b);
+console.log('object c like a:', c);
+console.log('changing a object');
+a = {
+    name: 'avgust'
+};
+console.log('object a:', a);
+console.log('object c like a?:', c); */
+
+var generate = function(numRows) {
+    let out = [];
+    // function buildRow();
+    let rowArray = [1];
+    let currentRow = 0;
+    let row = [];
+    if ( numRows > 0 ) {
+        out.push(rowArray);
+    }
+    function getEl(array, index) {
+        if ((array[index] === undefined)||(index < 0)) {
+            return 0;
+        }else return array[index];
+    }
+    while( currentRow < numRows ) {
+        row = [];
+        // currentRow++;
+        for(let i = 0; i <= currentRow; i++) {
+            row[i] = getEl(rowArray, i) + getEl(rowArray, i-1);
+        }
+        out[currentRow++] = row;
+        rowArray = row;
+    }
+    /*else {
+        generate(numRows-1);
+    }
+     */
+    // rowArray.push(1);
+    return out;
+};
+// console.log(generate(6));
+// console.log([0, 2, 3][1]);
