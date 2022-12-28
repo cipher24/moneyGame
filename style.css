@@ -24,7 +24,7 @@ span {
     border-radius: 3px;
 }
 .options {
-    background-color: lightcoral;
+    background-color: rgb(240, 0, 0);
     width: 500px;
     height: 200px;
 }
