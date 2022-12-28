@@ -56,15 +56,45 @@ moneyBalance.textContent = `$${currentMoney}`;
 // FIXED @шансы работали в зависимости от выбора решки или орла@ - Math.random это функция нужно вызывать через скобки
 
 /* Обработчик кнопки BET ON HEADS  */
+let succeed = false;
 
-let playEagle = document.getElementById("playHeads");
-playEagle.addEventListener("click", () => {
-  let succeed = false;
-  if (Math.random() < 0.6) {
-    succeed = true;
-  }
-  beginGamble(succeed);
-});
+// ? как-то передавать уже свершенное событие внутрь функции?
+function eventHandlerHeads() {
+  
+    succeed = false;
+    if (Math.random() < 0.6) {
+      succeed = true;
+    }
+    beginGamble();
+      playHeads.style.backgroundColor = "rgb(172, 153, 69)";
+      playHeads.removeEventListener("click", eventHandlerHeads);
+      setTimeout(() => {
+          playHeads.style.backgroundColor = "rgb(62, 202, 160)";
+          eventHandlerHeads();
+      }, 1000);
+
+}
+
+let playHeads = document.getElementById("playHeads");
+playHeads.addEventListener("click", eventHandlerHeads
+/* () => {
+      succeed = false;
+      if (Math.random() < 0.6) {
+        succeed = true;
+      }
+      beginGamble();
+      playHeads.style.backgroundColor = "rgb(172, 153, 69)";
+      setTimeout(() => {
+          playHeads.style.backgroundColor = "rgb(62, 202, 160)";
+          eventHandlerHeads();
+      }, 1000);
+      // setTimeout(readdListener, 1000);
+  
+} */);
+
+let buttons = document.querySelectorAll("button");
+console.log(buttons);
+
 
 
 /* Обработчик кнопки BET ON TAILS */
@@ -74,10 +104,11 @@ playTails.addEventListener("click", () => {
   if (Math.random() >= 0.6) {
     succeed = true;
   }
-  beginGamble(succeed);
+  beginGamble();
 });
 
 
+  
 
 //?!
 // неправильно прибавляются проценты - скатывание в стринг и обычные теперь тоже
@@ -92,7 +123,7 @@ let winSpanTransparent = 1;
 let winSpan = document.getElementById("win");
 let intervalMakeTransparent;
 
-function beginGamble(success) {
+function beginGamble() {
   let step = 1;
   winSpanTransparent = 1;
   if ((document.getElementById("fixedBet").value !== '')&&   (document.getElementById("radioFixed").checked)) {
@@ -104,7 +135,7 @@ function beginGamble(success) {
     step = currentMoney * Number(document.getElementById("percentBet").value) / 100;
     step = Number(step.toFixed(2));
   }
-  if (success == true) {
+  if (succeed == true) {
     currentMoney = parseFloat(currentMoney) + parseFloat(step);
     winSpan.textContent = `+ $${step}`;
     winSpan.style.color = `rgba(0, 230, 64, ${winSpanTransparent})`;

@@ -36,3 +36,7 @@ input {
 #win {
     font-size: 25px;
 }
+button {
+    background-color: rgb(62, 202, 160);
+
+}
